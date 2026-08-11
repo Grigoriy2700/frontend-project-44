@@ -1,5 +1,4 @@
-.PHONY:
-    install
+PHONY: install brain-games brain-even publish lint lintf
 
 install:
 	npm ci
@@ -8,13 +7,13 @@ brain-games:
 	node bin/brain-games.js
 
 brain-even:
-    node bin/brain-even.js
+	node bin/brain-even.js
 
 publish:
-    npm publish --dry-run
+	npm publish --dry-run
 
 lint:
-    npx eslint
+	npx eslint .
 
 lintf:
-    npx eslint --fix
+	npx eslint . --fix

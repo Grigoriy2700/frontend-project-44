@@ -1,71 +1,75 @@
+#!/usr/bin/env node
+
 import readlineSync from 'readline-sync'
+import {greeting} from "../src/cli.js";
 
-export function geradeUngerade(nameUser) {
+const nameUser = greeting()
 
-    let num; // Сгенерированное число
-    let numBool; //приведенное сгенерированное число к булиевому типу
-    let userAnswer; // Ответ пользователя булиев
-    let user; // Ответ пользователя
-    let noUs; // инверсия ответа пользователя при неверном ответе
+function geradeUngerade(nameUser) {
+  let num // Сгенерированное число
+  let numBool // приведенное сгенерированное число к булиевому типу
+  let userAnswer // Ответ пользователя булиев
+  let user // Ответ пользователя
+  let noUs // инверсия ответа пользователя при неверном ответе
 
-    console.log("Игра четное или нечетное")
+  console.log('Answer "yes" if the number is even, otherwise answer "no"')
 
-    function game() {
-        for (let i = 0; i < 3;){
-            genNum()
-            console.log("Число " + num + " четное?")
-            userInput()
-            if (userAnswer === numBool) {
-                console.log("Правильно!")
-                i++
-
-            } else {
-                console.log("Ваш ответ " + user + " неправильный");
-                console.log("Правильный ответ - " + noUs);
-                console.log("Давай попробуем еще раз?!")
-            }
-
-        }
-        console.log("Поздравляем " + nameUser +" вы ответили верно на все три вопроса")
+  function game() {
+    for (let i = 0; i < 3;) {
+      genNum()
+      console.log('Question:' + num )
+      userInput()
+      if (userAnswer === numBool) {
+        console.log('Correct!')
+        i++
+      }
+      else {
+        console.log( "'" + user +"'" + 'is wrong answer ;(. Correct answer was' + "'" + noUs + "'")
+        console.log('Let\'s try again, ' + nameUser + "!")
+        break;
+      }
     }
+    console.log('Congratulations, ' + nameUser + '!')
+  }
 
-//ввод пользователя
+  // ввод пользователя
 
-    function userInput() {
-        userAnswer = readlineSync.question('Yes or No ? : ').toLowerCase();
-        user = userAnswer;
-        console.log(user)
-        inputValidation()
+  function userInput() {
+    userAnswer = readlineSync.question('Your answer:').toLowerCase()
+    user = userAnswer
+    console.log(user)
+    inputValidation()
+  }
+
+  // проверка пользовательского ввода
+
+  function inputValidation() {
+    if (userAnswer === 'yes' || userAnswer === 'no') {
+      switch (userAnswer) {
+        case 'yes' :
+          userAnswer = true
+          noUs = 'no'
+          break
+        case 'no' :
+          userAnswer = false
+          noUs = 'yes'
+          break
+      }
     }
-
-//проверка пользовательского ввода
-
-    function inputValidation() {
-        if (userAnswer === 'yes' || userAnswer === 'no') {
-            switch (userAnswer) {
-                case 'yes' :
-                    userAnswer = true
-                    noUs = 'no';
-                    break;
-                case 'no' :
-                    userAnswer = false
-                    noUs = 'yes';
-                    break;
-            }
-        } else {
-            console.log('Неверный ввод, повторите...')
-            console.log("Число " + num + " четное?")
-            userInput()
-        }
+    else {
+      console.log( "'" + user +"'" + 'is wrong answer ;(. Correct answer was' + "'" + noUs + "'")
+      console.log('Let\'s try again, ' + nameUser + "!")
     }
+  }
 
-//Генерация числа
+  // Генерация числа
 
-    function genNum() {
-        num = Math.floor(Math.random() * 11)
-        numBool = num % 2 === 0;
-    }
+  function genNum() {
+    num = Math.floor(Math.random() * 11)
+    numBool = num % 2 === 0
+  }
 
-    game();
-
+  game()
 }
+
+geradeUngerade(nameUser);
