@@ -4,3 +4,4 @@
 [![asciicast](https://asciinema.org)](https://asciinema.org/a/68bONe9AENje9iEq) //четное нечетное
 [![asciicast](https://asciinema.org)](https://asciinema.org/a/zGO6pJENltgHdQgQ) //калькулятор
 [![asciicast](https://asciinema.org)](https://asciinema.org/a/xmX8BVcIU1AtUXxT) //общий делитель
+[![asciicast](https://asciinema.org)](https://asciinema.org/a/87TczeADVj8Ce3hh) //пропущенное число 

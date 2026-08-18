@@ -5,10 +5,11 @@ import { startEven } from './games/brain-even.js'
 import { startCalc } from './games/brain-calc.js'
 import { startDivide } from "./games/brain-gcd.js";
 import readlineSync from 'readline-sync'
+import {startNumberPass} from "./games/brain-progression.js";
 
 const nameUser = greeting()
 
-const games = ['Differences', 'Calculator', 'Divide']
+const games = ['Differences', 'Calculator', 'Divide', 'Number-Pass']
 
 let index = readlineSync.keyInSelect(games, 'who?')
 
@@ -21,5 +22,8 @@ switch (index) {
     break
   case 2:
     startDivide(nameUser)
+    break
+  case 3:
+    startNumberPass(nameUser)
     break
 }
