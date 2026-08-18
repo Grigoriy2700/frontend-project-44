@@ -1,6 +1,5 @@
 import readlineSync from 'readline-sync'
 
-
 export function greeting() {
   console.log('Welcome to the Brain Games! ')
 
@@ -8,5 +7,5 @@ export function greeting() {
 
   console.log(`Hello, ${name} !`)
 
-  return name;
+  return name
 }
