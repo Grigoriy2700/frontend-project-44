@@ -1,11 +1,22 @@
-#!/usr/bin/env node
 
-import readlineSync from 'readline-sync'
-import {greeting} from "../src/cli.js";
+import {runGame} from "../../src/index.js";
 
-const nameUser = greeting()
+const description = 'Answer "yes" if the number is even, otherwise answer "no"'
 
-function geradeUngerade(nameUser) {
+function  gameEven(){
+  const num = Math.floor(Math.random() * 11);
+  const question = String(num);
+  const correctAnswer = (num % 2 === 0) ? 'yes' : 'no';
+
+  return [question, correctAnswer]
+}
+
+export function startEven(nameUser){
+  runGame(description, gameEven, nameUser)
+}
+
+/*
+export function geradeUngerade(nameUser) {
   let num // Сгенерированное число
   let numBool // приведенное сгенерированное число к булиевому типу
   let userAnswer // Ответ пользователя булиев
@@ -21,6 +32,8 @@ function geradeUngerade(nameUser) {
       userInput()
       if (userAnswer === numBool) {
         console.log('Correct!')
+        console.log(userAnswer)
+        console.log(user)
         i++
       }
       else {
@@ -36,8 +49,7 @@ function geradeUngerade(nameUser) {
 
   function userInput() {
     userAnswer = readlineSync.question('Your answer:').toLowerCase()
-    user = userAnswer
-    console.log(user)
+    user = userAnswer //передаем ответ для изменения типа переменной
     inputValidation()
   }
 
@@ -72,4 +84,4 @@ function geradeUngerade(nameUser) {
   game()
 }
 
-geradeUngerade(nameUser);
+*/
